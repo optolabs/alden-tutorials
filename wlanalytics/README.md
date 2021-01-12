@@ -5,6 +5,6 @@ WLAN analytics scripts built on ifconfig, iwconfig, ping, speedtest-cli, and gre
 `sh wlanalytics.sh`
 
 # Run wlanalytics.py script with python3 interpreter
-`pip3 install speedtest-cli`
-`pip3 install json`
-`python3 wlanalytics.py`
+```pip3 install speedtest-cli
+   pip3 install json
+   python3 wlanalytics.py```
