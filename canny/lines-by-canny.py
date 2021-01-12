@@ -7,17 +7,20 @@
 
 import cv2 as cv2
 
-cam = cam = cv2.VideoCapture("./test.mp4")
+cam = cv2.VideoCapture("./test.mp4")
 
 while True:
+    # Read in frame from video feed
+    retval, frame = cam.read()
+    # Run canny method
+    edges = cv2.Canny(frame, 100, 200)
+
+    # Standard OpenCV Formatting
     cv2.namedWindow("Camera Feed", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("Camera Feed", 400, 225)
 
     cv2.namedWindow("Canny of Feed", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("Canny of Feed", 400, 225)
-
-    retval, frame = cam.read()
-    edges = cv2.Canny(frame, 100, 200)
 
     cv2.moveWindow("Camera Feed", 0, 0)
     cv2.moveWindow("Canny of Feed", 420, 0)
