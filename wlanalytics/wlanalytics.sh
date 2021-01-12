@@ -18,25 +18,25 @@ HOSTN=$(hostname)
 IPADDR=$(ifconfig | grep -A1 wlan0 | grep -o -P '.{0,0}inet.{0,14}'| grep -o -P '.{0,0}1.{0,13}')
 
 # Write Stdout and Stderr of ifwconfig to file
-iwconfig > ../tmp/script_data/iw.out 2>&1
+iwconfig > iw.out 2>&1
 
 # Get WLAN network name (SSID). Standard Length of SSID is 32 characters per spec
-SSID=$(grep -o -P '.{0,0}ESSID.{0,50}' ../tmp/script_data/iw.out | grep -o -P '.{0,0}".{0,35}' | tr -d '"')
+SSID=$(grep -o -P '.{0,0}ESSID.{0,50}' iw.out | grep -o -P '.{0,0}".{0,35}' | tr -d '"')
 
 # Get BITRATE
-BITRATE=$(grep -o -P '.{0,0}Rate=.{0,12}' ../tmp/script_data/iw.out | grep -o -P '.{0,0}=.{0,13}' | tr -d '=')
+BITRATE=$(grep -o -P '.{0,0}Rate=.{0,12}' iw.out | grep -o -P '.{0,0}=.{0,13}' | tr -d '=')
 
 # Get FREQUENCY of channel
-FREQUENCY=$(grep -o -P '.{0,0}Frequency:.{0,11}' ../tmp/script_data/iw.out | grep -o -P '.{0,0}:.{0,11}' | tr -d ':')
+FREQUENCY=$(grep -o -P '.{0,0}Frequency:.{0,11}' iw.out | grep -o -P '.{0,0}:.{0,11}' | tr -d ':')
 
 # Get TX Power of Router
-TXPOWER=$(grep -o -P '.{0,0}Power=.{0,10}' ../tmp/script_data/iw.out | grep -o -P '.{0,0}=.{0,10}' | tr -d '=')
+TXPOWER=$(grep -o -P '.{0,0}Power=.{0,10}' iw.out | grep -o -P '.{0,0}=.{0,10}' | tr -d '=')
 
 # Get RX Power on Module
-RXPOWER=$(grep -o -P '.{0,0}level=.{0,10}' ../tmp/script_data/iw.out | grep -o -P '.{0,0}=.{0,10}' | tr -d '=')
+RXPOWER=$(grep -o -P '.{0,0}level=.{0,10}' iw.out | grep -o -P '.{0,0}=.{0,10}' | tr -d '=')
 
 # Get Link Qualitycat
-LINKQUALITY=$(grep -o -P '.{0,0}Quality=.{0,7}' ../tmp/script_data/iw.out | grep -o -P '.{0,0}=.{0,5}' | tr -d '=')
+LINKQUALITY=$(grep -o -P '.{0,0}Quality=.{0,7}' iw.out | grep -o -P '.{0,0}=.{0,5}' | tr -d '=')
 
 ##################################################
 # OUTPUT SECTION
