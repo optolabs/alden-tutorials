@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # lines-by-canny.py
 # Property of Opto Labs
@@ -7,13 +7,24 @@
 
 import cv2 as cv2
 
-cam = cv2.VideoCapture("./test.mp4")
+# Conditional Initialization
+video_feed = False
+image_feed = True
+
+if video_feed:
+    cam = cv2.VideoCapture("./test.mp4")
 
 while True:
-    # Read in frame from video feed
-    retval, frame = cam.read()
+    if video_feed:
+        # Read in frame from video feed
+        retval, frame = cam.read()
+
+    if image_feed:
+        # Read frame from image file
+        frame = cv2.imread("./image.jpg")
+
     # Run canny method
-    edges = cv2.Canny(frame, 100, 200)
+    edges = cv2.Canny(frame, 180, 200)
 
     # Standard OpenCV Formatting
     cv2.namedWindow("Camera Feed", cv2.WINDOW_NORMAL)
