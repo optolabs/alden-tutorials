@@ -1,7 +1,10 @@
-# lines-by-canny instructions within macOS terminal
+# wlanalytics scripts
+WLAN analytics scripts built on ifconfig, iwconfig, ping, speedtest-cli, and grep
 
-# install OpenCV with pip3
-`pip3 install opencv-contrib-python`
+# Run Bash script for device config information
+```sh wlanalytics.sh```
 
-# Run python script with python3 interpreter
-`python3 lines-by-canny.py`
+# Run python script for UL / DL speedtest
+```pip3 install speedtest-cli```
+```pip3 install json```
+```python3 wlanalytics.py```
