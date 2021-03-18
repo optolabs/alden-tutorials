@@ -6,9 +6,27 @@
 # Property of Opto Labs
 #   Author: Alden Kane
 
+while getopts ":p" opt; do
+  case $opt in
+    p )
+      # -p flag returns power
+      # Write Stdout and Stderr of ifwconfig to file
+      iwconfig > iw.out 2>&1
+      # Get RX Power on Module
+      RXPOWER=$(grep -o -P '.{0,0}level=.{0,10}' iw.out | grep -o -P '.{0,0}=.{0,10}' | tr -d '=')
+      echo $RXPOWER
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+if [ $# -eq 0 ]
+  then 
 
 ##################################################
-# MEASUREMENT SECTION
+# MEASUREMENT SECTION - Base of Script
 ##################################################
 
 # Get Hostname
